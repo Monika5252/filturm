@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>{% block title %} {% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=3.0">
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  </head>
+  <style>
+    *{
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
+}
+
+.body1{
+  font-family: montserrat;
+}
+nav{
+  background:rgb(0,29,75);
+  height: 50px;
+  width: 100%;
+}
+label.logo{
+  color: white;
+  font-size: 20px;
+  line-height: 50px;
+  padding: 0 100px;
+  font-weight: bold;
+}
+nav ul{
+  float: right;
+  margin-right: 20px;
+}
+nav ul li{
+  display: inline-block;
+  line-height: 50px;
+  margin: 0 5px;
+}
+nav ul li a{
+  color: white;
+  font-size: 17px;
+  padding: 7px 13px;
+  border-radius: 3px;
+  text-transform: uppercase;
+}
+a.active,a:hover{
+  background: #1b9bff;
+  transition: .5s;
+}
+.checkbtn{
+  font-size: 30px;
+  /* color: white; */
+  float: right;
+  line-height: 80px;
+  margin-right: 40px;
+  cursor: pointer;
+  display: none;
+}
+#check{
+  display: none;
+}
+
+ /* /media querry/
+@media (max-width: 952px){
+  label.logo{
+    font-size: 20px;
+    padding-left: 50px;
+  }
+  nav ul li a{
+    font-size: 16px;
+  }
+}
+ @media (max-width: 858px){
+   .checkbtn{
+    display: block;
+  }
+   ul{
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background: #2c3e50;
+    top: 50px;
+    left: -100%;
+    text-align:center;
+    transition: all .5s;
+  }
+  nav ul li{
+    display: block;
+    margin: 50px 0;
+    line-height: 30px;
+  }
+  nav ul li a{
+    font-size: 20px;
+  }
+  a:hover,a.active{
+    background: none;
+    color: #0082e6;
+  }
+  #check:checked ~ ul{
+    left: 0;
+  }
+ } */
+/* section{
+  background: url(bg1.jpg) no-repeat;
+  background-size: cover;
+  height: calc(100vh - 80px);
+} */
+.container{
+    /* background:url('C:/Users/hp/Desktop/HR.jfif'); */
+    position:relative;
+    max-width: 1750px;
+    width: 99%;
+    height:648px;
+    border-radius:5px;
+    padding: 35px;
+    margin: 0 15px;
+    background-color: #fff;
+    /* /* box-shadow: 0 5px 10px rgba(0,0,0,0.1); */
+}
+.container header{
+    position: relative;
+    left:582px;
+    font-size: 25px;
+    font-weight: 600;
+    color: #333;
+}
+.container header::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    height: 3px;
+    width: 365px;
+    border-radius: 8px;
+    background-color: #4070f4;
+}
+/* .container form{
+    position: relative;
+    margin-top: 15px;
+    min-height: 700px;
+    background-color: #fff;
+    overflow: hidden;
+}
+.container form .form{
+    position: absolute;
+    background-color: #fff;
+    transition: 0.3s ease;
+}
+.container form .form.second{
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(100%);
+}
+form.secActive .form.second{
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(0);
+}
+form.secActive .form.first{
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-100%);
+}
+.container form .title{
+    display: block;
+    margin-bottom: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    margin: 6px 0;
+    color: #333;
+} */
+.container form .fields{
+    display: inline-flex;
+    align-items: center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+}
+form .fields .input-field{
+    display: flex;
+    width: calc(90% / 5 - 15px);
+    flex-direction: column;
+    margin: 4px 0;
+}
+.input-field label{
+    font-size:18.5px;
+    font-weight: 500;
+    font-style: impact;
+    color: #2e2e2e;
+}
+.input-field input, select{
+    outline: none;
+    font-size:15px;
+    font-weight: 400;
+    color: #333;
+    border-radius:5px;
+    border: 1px solid #aaa;
+    padding: 10px;
+    length: 15px;
+    height: 42px;
+    margin: 8px 0;
+    text-transform: uppercase;
+}
+.input-field input :focus,
+.input-field input::-webkit-input-placeholder,
+select { /* Edge */
+  text-transform: none;
+}
+
+.input-field input:-ms-input-placeholder,
+select { /* Internet Explorer 10-11 */
+  text-transform: none;
+}
+
+.input-field input::placeholder,
+select {
+  text-transform: none;
+}
+.input-field select:focus{
+    box-shadow: 0 3px 6px rgba(0,0,0,0.13);
+}
+.input-field select,
+.input-field input[type="date"]{
+    color: #333;
+}
+.input-field input[type="date"]:valid{
+    color: #333;
+}
+.container form button, .backBtn{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    height: 45px;
+    max-width: 200px;
+    width: 100%;
+    border: none;
+    outline: none;
+    /* color: #fff; */
+    border-radius: 5px;
+    margin: 25px 0;
+    background-color:#3498db;
+    transition: all 0.7s linear;
+    cursor: pointer;
+}
+.container form .btnText{
+    font-size: 18.5px;
+    font-weight: 500;
+}
+form button:hover{
+    background-color: #265df2;
+}
+/* form button i,
+form .backBtn i{
+    margin: 0 6px;
+}
+form .backBtn i{
+    transform: rotate(180deg);
+}
+form .buttons{
+    display: flex;
+    align-items: center;
+}
+form .buttons button , .backBtn{
+    margin-right: 14px;
+}
+/* @media (max-width: 750px) {
+    .container form{
+        overflow-y: scroll;
+    }
+    .container form::-webkit-scrollbar{
+       display: none;
+    }
+    form .fields .input-field{
+        width: calc(100% / 2 - 15px);
+    }
+}
+
+@media (max-width: 550px) {
+    form .fields .input-field{
+        width: 100%;
+    }
+} */
+
+.body1{
+   min-height: 100vh;
+    /* display: flex; */
+    /* align-items: center; */
+    justify-content: center;
+    background:rgb(240, 235, 235)
+}
+
+.ak{
+    text-align: center;
+  font-size: 25px;
+  height: 3px;
+  text-decoration-style: solid ;
+    /* text-decoration: underline blue; */
+}
+marquee{
+	padding: 4px;
+	color:white;
+	font-size:27px;
+    font-style:impact;
+    /* font-weight: 100px; */
+
+}
+
+</style>
+
+
+<br>
+<img style="float: right; margin: 0px 0px 15px 15px;" src="C:\Users\hp\Desktop\WhatsApp_Image_2023-01-13_at_9.30.34_AM-removebg-preview - Shortcut.lnk" width="145" /><br><br><br>
+<br>
+
+  <nav style="margin-top: 60px;border-top-width: 142px;margin-bottom: 0px;height: 60px;"> <marquee direction="left">!... Welcome To Filtrum Autocomp Private Limited ...!
+</marquee>
+      <input type="checkbox" id="check">
+      <label for="check" class="checkbtn">
+        <i class="fas fa-bars"></i>
+      </label>
+
+    </nav>
+
+
+    <body>
+        <header class="ak"><h2>Employee Information</h2></header>
+<div class="container" style="padding-bottom: 9px;padding-left: 0px;padding-right: 0px;padding-top:2px;margin-left: 2px;margin-right: 2px;bottom: 37px;top: 45px;"><br>
+
+            <form method="POST" style="padding-left:40px;">
+                  {% csrf_token %}
+                <div class="form first">
+                        <div class="fields">
+                            <div class="input-field">
+
+                                <input type="text"  name="SSC" placeholder="SSC Board" required>
+                            </div>
+                            <div class="input-field">
+
+                                <input type="text" name="sscbord"   placeholder="SSC School / Institute" required>
+                            </div>
+                            <div class="input-field">
+
+                                <input type="text" name="sscpersentage"   placeholder="Enter  Percentage" required >
+                            </div>
+
+                            <div class="input-field">
+
+                                <input type="date" name="sscpassingyear"  placeholder="date" required >
+                            </div>
+
+                            <div class="input-field">
+
+                                <input type="file" name="ssccer"  placeholder="file" required >
+                            </div>
+
+                            <div class="input-field">
+
+                                <input type="text" name="hsc"  placeholder="HSC Board"  >
+                            </div>
+
+                            <div class="input-field">
+
+                                <input type="text" name="hsccbord"  placeholder="HSC College / Institute"  >
+                            </div>
+
+                            <div class="input-field">
+
+                                <input type="text" name="hscpersentage"  placeholder="Enter  Percentage"  >
+                            </div>
+
+                            <div class="input-field">
+
+                                <input type="date" name="hscpassingyear"  placeholder="date" >
+                            </div>
+
+
+                              <div class="input-field">
+
+                                <input type="file" name="hsccer"  placeholder="file" >
+                            </div>
+
+
+                            <div class="input-field">
+
+                                <input type="text" name="diploma"  placeholder="Diploma Stream"  >
+                            </div>
+
+                            <div class="input-field">
+
+                                <input type="text" name="diplomabord"  placeholder="Diploma College / Institute"  >
+                            </div>
+
+                            <div class="input-field">
+
+                                <input type="text" name="diplomapersentage"  placeholder="Enter  Percentage"  >
+                            </div>
+
+                            <div class="input-field">
+
+                                <input type="date" name="diplomapassingyear"   placeholder="date" >
+                            </div>
+
+
+                              <div class="input-field">
+
+                                <input type="file" name="diploma"  placeholder="file" >
+                            </div>
+
+                            <div class="input-field">
+
+                                <input type="text" name="gradution"   placeholder="Graduation Stream"  >
+                            </div>
+
+                            <div class="input-field">
+
+                                <input type="text" name="gradutionbord"  placeholder="Graduatuion College / Institute"  >
+                            </div>
+
+                            <div class="input-field">
+
+                                <input type="text" name="gradutionpersentage"  placeholder="Enter  Percentage"  >
+                            </div>
+
+                            <div class="input-field">
+
+                                <input type="date" name="gradutionpassingyear"   placeholder="date" >
+                            </div>
+
+
+                              <div class="input-field">
+
+                                <input type="file" name="gradutioncer"  placeholder="file" >
+                            </div>
+
+                            <div class="input-field">
+
+                                <input type="text" name="postgradution"  placeholder="Post Graduation Stream"  >
+                            </div>
+
+                            <div class="input-field">
+
+                                <input type="text" name="postgradutionbord"  placeholder="Post Graduation College / Institute"  >
+                            </div>
+
+                            <div class="input-field">
+
+                                <input type="text" name="postgradutionpersentage"  placeholder="Enter  Percentage"  >
+                            </div>
+
+                            <div class="input-field">
+
+                                <input type="date" name="postgradutionpassingyear"   placeholder="date" >
+                            </div>
+
+
+                              <div class="input-field">
+
+                                <input type="file" name="postgradutioncer"   placeholder="file" >
+                            </div>
+
+
+
+
+
+                            <div class="input-field">
+
+                              <input type="text" name="other"  placeholder="other Stream"  >
+                          </div>
+
+                          <div class="input-field">
+
+                              <input type="text" name="institute"  placeholder="otyhrt/ Institute"  >
+                          </div>
+
+                          <div class="input-field">
+
+                              <input type="text" name="corsename"  placeholder="Enter  Percentage"  >
+                          </div>
+
+                          <div class="input-field">
+
+                              <input type="date" name="corsepersentage"   placeholder="date" >
+                          </div>
+
+
+                            <div class="input-field">
+
+                              <input type="file" name="corsecer"   placeholder="file" >
+                          </div>
+
+
+<!--                          <button class="" style="margin-left: 1200px;">-->
+<!--                              <span class="btnText"><a href="">Next Page</a></span>-->
+<!--                                <i class="uil uil-navigator"></i>-->
+<!--                            </button>-->
+
+                            <button type="">Submit</button>
+
+                          </div>
+                         </div>
+                        </div>
+                </div>
+            </form>
+</div>
+</body>
+</html>

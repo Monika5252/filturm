@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Responsive Navbar</title>
+   <meta name="viewport" content="width=device-width, initial-scale=3.0">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+</head>
+
+<style>
+table, th, td {
+border: 1px solid black;
+border-collapse: collapse;
+}
+th {
+padding: 5px;
+text-align: left;
+}
+
+td {
+padding: 5px;
+text-align:center;
+}
+</style>
+
+
+<body>
+
+    <center>
+    <h1><u>Employee  Information</u> </h1>
+<table style="width:40%">
+
+<tr>
+<th>First Name:</th>
+<td>{{name}}</td>
+</tr>
+
+<tr>
+    <th>Middle Name:</th>
+<td>{{midname}}</td>
+</tr>
+
+<tr>
+    <th>Last Name:</th>
+<td>{{lastname}}</td>
+</tr>
+
+<tr>
+    <th>Date of Birth:</th>
+<td>{{dob}}</td>
+</tr>
+
+<tr>
+    <th>Birth Place:</th>
+    <td>{{birthplace}}</td>
+</tr>
+
+<tr>
+    <th>Birth Place Taluka:</th>
+    <td>{{birthplacetaluka}}</td>
+</tr>
+
+<tr>
+    <th>Birth Place District:</th>
+    <td>{{bpd}}</td>
+</tr>
+
+<tr>
+    <th>Age:</th>
+    <td>{{age}}</td>
+</tr>
+
+<tr>
+    <th>Language Known:</th>
+    <td>{{languageknown}}</td>
+</tr>
+
+<tr>
+    <th>Gender:</th>
+    <td>{{gender}}</td>
+</tr>
+
+<tr>
+    <th>Marital Status:</th>
+    <td>{{marritalstatus}}</td>
+</tr>
+
+<tr>
+    <th>Blood Group:</th>
+    <td>{{bloodgroup}}</td>
+</tr>
+
+<tr>
+    <th>Nationality:</th>
+    <td>{{nationality}}</td>
+</tr>
+
+<tr>
+    <th>Religion:</th>
+    <td>{{religion}}</td>
+</tr>
+
+<tr>
+    <th>Caste:</th>
+    <td>{{cast}}</td>
+</tr>
+
+<tr>
+    <th>Category:</th>
+    <td>{{category}}</td>
+</tr>
+
+<tr>
+    <th>Email Id:</th>
+    <td>{{emailid}}</td>
+</tr>
+
+<tr>
+    <th>Contact No:</th>
+    <td>{{contactno}}</td>
+</tr>
+
+<tr>
+    <th>Emergency Contact No:</th>
+    <td>{{emergencycontactno}}</td>
+</tr>
+
+<tr>
+    <th>Aadhar Card No :</th>
+    <td>{{ak}}</td>
+</tr>
+
+<tr>
+    <th>Aadhar Card Image :</th>
+    <td>{{adharimage}}</td>
+</tr>
+
+<tr>
+    <th>Pan Card No:</th>
+    <td>{{pancardno}}</td>
+</tr>
+
+<tr>
+    <th>Pan Card Image:</th>
+    <td>{{panimg}}</td>
+</tr>
+
+<tr>
+    <th>Present Address :</th>
+    <td>{{pad}}</td>
+</tr>
+
+<tr>
+    <th>Pin Code:</th>
+    <td>{{pincode}}</td>
+</tr>
+
+<tr>
+    <th>Permanent Address:</th>
+    <td>{{permanentaddress}}</td>
+</tr>
+
+<tr>
+    <th>pin code:</th>
+    <td>{{perpincode}}</td>
+</tr>
+
+<tr>
+    <th>Employee Image :</th>
+    <td>{{employeeimage}}</td>
+</tr>
+</table>
+
+
+<h1><u>Education Details</u></h1>
+<table style="width:40%">
+<tr>
+    <th>SSC Board:</th>
+    <td>{{ssc}}</td>
+    </tr>
+
+<tr>
+<th>SSC School:</th>
+<td>{{sscbord}}</td>
+</tr>
+
+<tr>
+<th> Percentage:</th>
+<td>{{sscpersentage}}</td>
+</tr>
+
+<tr>
+<th>Date Of Passing:</th>
+<td>{{sscpassingyear}}</td>
+</tr>
+
+<tr>
+<th>Passing Certificate:</th>
+<td>{{ssccertificate}}</td>
+</tr>
+
+<tr>
+<th>HSC Board:</th>
+<td>{{hsc}}</td>
+</tr>
+
+<tr>
+<th>HSC College / Institute:</th>
+<td>{{hscbord}}</td>
+</tr>
+
+<tr>
+<th>Percentage:</th>
+<td>{{hscpersentage}}</td>
+</tr>
+
+<tr>
+<th>Date Of Passing:</th>
+<td>{{hscpassingyear}}</td>
+</tr>
+
+<tr>
+<th>Passing Certificate:</th>
+<td>{{hsccertificate}}</td>
+</tr>
+
+<tr>
+<th>Diploma Stream:</th>
+<td>{{diploma}}</td>
+</tr>
+
+<tr>
+<th>Diploma College / Institute:</th>
+<td>{{diplomabord}}</td>
+</tr>
+
+<tr>
+<th>Percentage:</th>
+<td>{{diplomapersentage}}</td>
+</tr>
+
+<tr>
+<th>Date Of Passing:</th>
+<td>{{diplomapassingyear}}</td>
+</tr>
+
+<tr>
+<th>Passing Certificate:</th>
+<td>{{diplomacertificate}}</td>
+</tr>
+
+<tr>
+<th>Graduation:</th>
+<td>{{gradution}}</td>
+</tr>
+
+<tr>
+<th>Graduation College / Institute:</th>
+<td>{{gradutionbord}}</td>
+</tr>
+
+<tr>
+<th>Percentage:</th>
+<td>{{gradutionpersentage}}</td>
+</tr>
+
+<tr>
+<th>Date Of Passing :</th>
+<td>{{gradutionpassingyear}}</td>
+</tr>
+
+<tr>
+<th>Passing Certificate:</th>
+<td>{{gradutioncertificate}}</td>
+</tr>
+
+<tr>
+<th>Post Graduation:</th>
+<td>{{postgradution}}</td>
+</tr>
+
+<tr>
+<th>Post Graduation College / Institute:</th>
+<td>{{postgradutionbord}}</td>
+</tr>
+
+<tr>
+<th>Percentage:</th>
+<td>{{postgradutionbordbord}}</td>
+</tr>
+
+<tr>
+<th>Date Of Passing:</th>
+<td>{{postgradutionpassingyear}}</td>
+</tr>
+
+<tr>
+<th>Passing Certificate:</th>
+<td>{{postgradutioncertificate}}</td>
+</tr>
+
+<tr>
+<th>Other Courses:</th>
+<td>{{other}}</td>
+</tr>
+
+<tr>
+<th>College / Institute:</th>
+<td>{{institude}}</td>
+</tr>
+
+<tr>
+<th>Enter Percentage:</th>
+<td>{{corsename}}</td>
+</tr>
+
+<tr>
+<th>Date Of Passing:</th>
+<td>{{corsepersentage}}</td>
+</tr>
+
+<tr>
+    <th>Passing Certificate:</th>
+    <td>{{corsecertificate}}</td>
+    </tr>
+</table>
+
+<h1><u>Family Details </u></h1>
+<table style="width:40%">
+<tr>
+    <th>Father / In Laws:</th>
+    <td>{{father}}</td>
+    </tr>
+
+<tr>
+<th>Date Of Birth:</th>
+<td>{{fdob}}</td>
+</tr>
+
+<tr>
+<th> Age:</th>
+<td>{{fage}}</td>
+</tr>
+
+<tr>
+<th>Gender:</th>
+<td>{{fgen}}</td>
+</tr>
+
+<tr>
+<th>Relation With Employee:</th>
+<td>{{frelation}}</td>
+</tr>
+
+<tr>
+<th>Mother /In Laws:</th>
+<td>{{mather}}</td>
+</tr>
+
+<tr>
+<th>Date of Birth:</th>
+<td>{{mdob}}</td>
+</tr>
+
+<tr>
+<th>Age:</th>
+<td>{{mage}}</td>
+</tr>
+
+<tr>
+<th>Gender:</th>
+<td>{{mgen}}</td>
+</tr>
+
+<tr>
+<th>Relation With Employee:</th>
+<td>{{mrelation}}</td>
+</tr>
+
+<tr>
+<th>Children 1:</th>
+<td>{{cihldren1}}</td>
+</tr>
+
+<tr>
+<th>Date of Birth:</th>
+<td>{{c1dob}}</td>
+</tr>
+
+<tr>
+<th>Age:</th>
+<td>{{c1age}}</td>
+</tr>
+
+<tr>
+<th>Gender:</th>
+<td>{{c1gen}}</td>
+</tr>
+
+<tr>
+<th>Relation With Employee:</th>
+<td>{{c1relation}}</td>
+</tr>
+
+<tr>
+<th>Children 2:</th>
+<td>{{children2}}</td>
+</tr>
+
+<tr>
+<th>Date of Birth:</th>
+<td>{{c2dob}}</td>
+</tr>
+
+<tr>
+<th>Age:</th>
+<td>{{c2age}}</td>
+</tr>
+
+<tr>
+<th>Gender :</th>
+<td>{{c2gen}}</td>
+</tr>
+
+<tr>
+<th>Relation With Employee:</th>
+<td>{{crelation}}</td>
+</tr>
+</table>
+
+<h1><u>Work Experience</u></h1>
+<table style="width:40%">
+<tr>
+    <th>Company Name:</th>
+    <td>{{companyname}}</td>
+    </tr>
+
+    <tr>
+        <th>Duration (From):</th>
+        <td>{{durationfrom}}</td>
+        </tr>
+
+        <tr>
+            <th>Duration (To):</th>
+            <td>{{durationto}}</td>
+            </tr>
+
+            <tr>
+                <th>Joining CTC:</th>
+                <td>{{joiningctc}}</td>
+                </tr>
+
+                <tr>
+                    <th>Last CTC:</th>
+                    <td>{{lctc}}</td>
+                    </tr>
+
+                    <tr>
+                        <th>Total Work Experience:</th>
+                        <td>{{twe}}</td>
+                        </tr>
+</table>
+<!--        <a href="http://192.168.200.231:8000/approvcd ">-->
+<!--        <button> Approve<button> </a>-->
+        <a href="http://127.0.0.1:8000/approv">
+        <button> Approve<button></a>
+    </center>
+</body>
+</html>

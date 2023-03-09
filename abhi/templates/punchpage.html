@@ -1,0 +1,825 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+{% load static %}
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bootstrap CRUD Data Table for Database with Modal Form</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
+<body>
+
+ <div class="nav" id="navbar">
+            <nav class="nav__container">
+                <div>
+                    <!-- <a href="#" class="nav__link nav__logo">
+                        <i class='bx bxs-disc nav__icon' ></i>
+                        <span class="nav__logo-name">Bedimcode</span>
+                    </a> -->
+
+                    <div class="nav__list">
+                        <div class="nav__items">
+                            <h1 class="nav__subtitle">User <br> Dashboard</h1>
+
+                            <!-- <a href="#" class="nav__link active">
+                                <i class='bx bx-home nav__icon' ></i>
+                                <span class="nav__name">Home</span>
+                            </a> -->
+
+                            <div class="nav__dropdown">
+                                <a href="#" class="nav__link">
+                                    <i class='bx bx-user nav__icon' ></i>
+                                    <span class="nav__name">Main Menu</span>
+                                    <i class='bx bx-chevron-down nav__icon nav__dropdown-icon'></i>
+                                </a>
+
+                                <div class="nav__dropdown-collapse">
+                                    <div class="nav__dropdown-content">
+                                        <a href="#" class="nav__dropdown-item">My Payslip</a>
+                                        <a href="#" class="nav__dropdown-item">My Tax Report</a>
+                                        <a href="#" class="nav__dropdown-item">My Form 16</a>
+                                        <a href="#" class="nav__dropdown-item">Income Tax Report</a>
+                                        <a href="#" class="nav__dropdown-item">Change Password</a>
+                                        <a href="#" class="nav__dropdown-item">Annual Salery Statement</a>
+                                        <a href="#" class="nav__dropdown-item">My Payslip</a>
+                                        <a href="#" class="nav__dropdown-item">Investment Declaration</a>
+                                        <a href="#" class="nav__dropdown-item">Personal details</a>
+                                        <a href="#" class="nav__dropdown-item">My Documents</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- <a href="#" class="nav__link">
+                                <i class='bx bx-message-rounded nav__icon' ></i>
+                                <span class="nav__name">Messages</span>
+                            </a>
+                        </div>
+
+                        <div class="nav__items">
+                            <h3 class="nav__subtitle">Menu</h3> -->
+
+                            <div class="nav__dropdown">
+                                <a href="#" class="nav__link">
+                                  <i class='bx bxs-grid'></i>
+                                    <span class="nav__name">Leave Management</span>
+                                    <i class='bx bx-chevron-down nav__icon nav__dropdown-icon'></i>
+                                </a>
+
+                                <div class="nav__dropdown-collapse">
+                                    <div class="nav__dropdown-content">
+                                        <a href="{% url 'empleave' %}" class="nav__dropdown-item">My Leave Application</a>
+                                        <a href="#" class="nav__dropdown-item">My Leave Calender</a>
+                                        <a href="#" class="nav__dropdown-item">Manage Comp-Off</a>
+                                        <a href="#" class="nav__dropdown-item">Leave Encashment</a>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="nav__dropdown">
+                              <a href="#" class="nav__link">
+                                <i class='bx bx-line-chart'></i>
+                                  <span class="nav__name">Attendance</span>
+                                  <i class='bx bx-chevron-down nav__icon nav__dropdown-icon'></i>
+                              </a>
+
+                              <div class="nav__dropdown-collapse">
+                                  <div class="nav__dropdown-content">
+                                      <a href="{% url 'punch_in' %}" class="nav__dropdown-item">Punch IN/OUT</a>
+                                      <a href="#" class="nav__dropdown-item">Punch Card</a>
+                                      <a href="#" class="nav__dropdown-item">My Daily Attendance</a>
+                                      <a href="#" class="nav__dropdown-item">My OD Application</a>
+                                      <a href="#" class="nav__dropdown-item">My Punch Application</a>
+                                  </div>
+                              </div>
+
+                          </div>
+
+                            <!-- <a href="#" class="nav__link">
+                                <i class='bx bx-compass nav__icon' ></i>
+                                <span class="nav__name">Explore</span>
+                            </a>
+                            <a href="#" class="nav__link">
+                                <i class='bx bx-bookmark nav__icon' ></i>
+                                <span class="nav__name">Saved</span>
+                            </a> -->
+                        </div>
+                    </div>
+                </div>
+
+                <a href="{% url 'punch_in' %}" class="nav__link nav__logout">
+                    <i class='bx bx-log-out nav__icon' ></i>
+                    <span class="nav__name">Log Out</span>
+                </a>
+            </nav>
+        </div>
+
+<div class="container">
+<div class="table-wrapper">
+<div class="table-title">
+<div class="row">
+<div class="col-sm-6">
+<h2><b>Mark Attendance</b> </h2>
+</div>
+<div class="col-sm-6" style="    
+left: 295px;">
+</div>
+</div>
+</div>
+<div class="content">
+<form method="POST">
+      {% csrf_token %}
+
+    <div id="clockdate">
+        <div class="clockdate-wrapper">
+            <object id="clock" name="punch"></object><br>
+<!--            cournt time:<input type="text" value="clock"  name="punchin" readonly>-->
+            <input type="time" value=""  name="st" class="form-control textinput" id="quant" readonly>
+
+          <div id="date"></div>
+        </div>
+      </div>
+
+<br>
+    <button type='submit' class="btn btn-success " data-toggle="modal" id="myBtn" onclick="disableBtn()" style="margin-left: 320px;"<a href="{% url 'punch_in' %}"></a> <span>Punch In</span> </button>
+
+    <button type='submit' class="btn btn-danger" id="myBtn1"   onclick="enableBtn()" data-toggle="modal" style="margin-right: 256px;"<a href="{% url 'login' %}"></a> <span>Punch Out</span></button>
+
+<hr>
+<!--    <button type="button" id="lock" onclick="enableNum()">Lock in</button>-->
+<!--<button type="button"id="randomNum" disabled>Random Number</button>-->
+<a href="Show Previous Punches" style="margin-left: 323px;"><span>Show Previous Punches</span></a>
+</div>
+<style>
+.container{
+		width:777px;
+	}
+  body {
+        color: #566787;
+		background: #F9F6FD;
+		font-family: 'Varela Round', sans-serif;
+		font-size: 16px;
+	}
+	.table-wrapper {
+        background: #fff;
+        padding: 20px 25px;
+        margin: 30px 0;
+		box-shadow: 0 1px 1px rgba(0,0,0,.05);
+		border-radius: 30px;
+    }
+	.table-title {
+		padding-bottom: 15px;
+		background: linear-gradient(40deg, #2096ff, #05ffa3) !important;;
+		color: #fff;
+		padding: 16px 30px;
+		margin: -20px -25px 10px;
+		border-radius: 3px 3px 0 0;
+    }
+    .table-title h2 {
+		margin: 5px 0 0;
+		font-size: 24px;
+	}
+
+    /* /////form/////  */
+    .content form .user-details{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 20px 0 12px 0;
+}
+form .user-details .input-box{
+  margin-bottom: 15px;
+  width: calc(100% / 3 - 20px);
+}
+form .input-box span.details{
+  display: block;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+.user-details .input-box input{
+  height: 45px;
+  width: 100%;
+  outline: none;
+  font-size: 16px;
+  border-radius: 5px;
+  padding-left: 15px;
+  border: 1px solid #ccc;
+  border-bottom-width: 2px;
+  transition: all 0.3s ease;
+}
+.user-details .input-box input:focus,
+.user-details .input-box input:valid{
+  border-color: #E4E9F7;
+}
+ form .gender-details .gender-title{
+  font-size: 20px;
+  font-weight: 500;
+ }
+ form .category{
+   display: flex;
+   width: 80%;
+   margin: 14px 0 ;
+   justify-content: space-between;
+ }
+ form .category label{
+   display: flex;
+   align-items: center;
+   cursor: pointer;
+ }
+ form .category label .dot{
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  margin-right: 10px;
+  background: #d9d9d9;
+  border: 5px solid transparent;
+  transition: all 0.3s ease;
+}
+ #dot-1:checked ~ .category label .one,
+ #dot-2:checked ~ .category label .two,
+ #dot-3:checked ~ .category label .three{
+   background: #E4E9F7;
+   border-color: #d9d9d9;
+ }
+ form input[type="radio"]{
+   display: none;
+ }
+ form .button{
+   height: 45px;
+   margin: 35px 0
+ }
+ form .button input{
+   height: 100%;
+   width: 100%;
+   border-radius: 5px;
+   border: none;
+   color: white;
+   font-size: 18px;
+   font-weight: 500;
+   letter-spacing: 1px;
+   cursor: pointer;
+   transition: all 0.3s ease;
+   background: #395eff;
+ }
+ form .button input:hover{
+  /* transform: scale(0.99); */
+  /* background: linear-gradient(-135deg, #71b7e6, #9b59b6); */
+  }
+ @media(max-width: 584px){
+ .container{
+  max-width: 100%;
+}
+form .user-details .input-box{
+    margin-bottom: 15px;
+    width: 100%;
+  }
+  form .category{
+    width: 100%;
+  }
+  .content form .user-details{
+    max-height: 300px;
+    overflow-y: scroll;
+  }
+  .user-details::-webkit-scrollbar{
+    width: 5px;
+  }
+  }
+  @media(max-width: 459px){
+  .container .content .category{
+    flex-direction: column;
+  }
+}
+            </style>
+<script>
+  /*==================== SHOW NAVBAR ====================*/
+const showMenu = (headerToggle, navbarId) =>{
+    const toggleBtn = document.getElementById(headerToggle),
+    nav = document.getElementById(navbarId)
+
+    // Validate that variables exist
+    if(headerToggle && navbarId){
+        toggleBtn.addEventListener('click', ()=>{
+            // We add the show-menu class to the div tag with the nav__menu class
+            nav.classList.toggle('show-menu')
+            // change icon
+            toggleBtn.classList.toggle('bx-x')
+        })
+    }
+}
+showMenu('header-toggle','navbar')
+
+/*==================== LINK ACTIVE ====================*/
+const linkColor = document.querySelectorAll('.nav__link')
+
+function colorLink(){
+    linkColor.forEach(l => l.classList.remove('active'))
+    this.classList.add('active')
+}
+
+linkColor.forEach(l => l.addEventListener('click', colorLink))
+</script>
+    <script>
+function disableBtn() {
+  document.getElementById("myBtn").disabled = true;
+}
+
+function enableBtn() {
+  document.getElementById("myBtn1").disabled = false;
+}
+    </script>
+<style>
+  /*========== GOOGLE FONTS ==========*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
+/*========== VARIABLES CSS ==========*/
+:root {
+  --header-height: 7.5rem;
+  --nav-width: 284px;
+
+  /*========== Colors ==========*/
+  --first-color: #6923D0;
+  --first-color-light: #F4F0FA;
+  --title-color: #19181B;
+  --text-color: #58555E;
+  --text-color-light: #0073ff;
+  --body-color: #F9F6FD;
+  --container-color: #FFFFFF;
+
+  /*========== Font and typography ==========*/
+  --body-font: 'Poppins', sans-serif;
+  --normal-font-size: .100rem;
+  --small-font-size: .250rem;
+  --smaller-font-size: .200rem;
+
+  /*========== Font weight ==========*/
+  --font-medium: 700;
+  --font-semi-bold: 800;
+
+  /*========== z index ==========*/
+  --z-fixed: 100;
+}
+
+@media screen and (min-width: 1024px) {
+  :root {
+    --normal-font-size: 1.6rem;
+    --small-font-size: 0.950rem;
+    --smaller-font-size: .818rem;
+  }
+}
+
+/*========== BASE ==========*/
+*, ::before, ::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: var(--header-height) 0 0 0;
+  padding: 1rem 1rem 0;
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+  background-color: var(--body-color);
+  color: var(--text-color);
+}
+
+h3 {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 11%;
+
+  margin-bottom: 800px;
+  /* margin-left:1200px; */
+  margin-left: 1270px;
+  margin-top: -70px;
+}
+
+/*========== HEADER ==========*/
+.header {
+  position:absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  background-color: var(--container-color);
+  box-shadow: 0 1px 0 rgba(22, 8, 43, 0.1);
+  padding: 0 1rem;
+  z-index: var(--z-fixed);
+}
+
+.header__container {
+  display: flex;
+  align-items: center;
+  height: var(--header-height);
+  justify-content: space-between;
+}
+
+.header__img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}
+
+.header__logo {
+  color: var(--title-color);
+  font-weight: var(--font-medium);
+  display: none;
+  width: 500px;
+ height: 70px;
+ margin-top: -130px;
+}
+
+.header__search {
+  display: flex;
+  padding: .40rem .75rem;
+  background-color: var(--first-color-light);
+  border-radius: .25rem;
+}
+
+.header__input {
+  width: 100%;
+  border: none;
+  outline: none;
+  background-color: var(--first-color-light);
+}
+
+.header__input::placeholder {
+  font-family: var(--body-font);
+  color: var(--text-color);
+}
+
+.header__icon,
+.header__toggle {
+  font-size: 1.2rem;
+}
+
+.header__toggle {
+  color: var(--title-color);
+  cursor: pointer;
+}
+
+/*========== NAV ==========*/
+.nav {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  height: 100vh;
+  padding: 1rem 1rem 0;
+  background-color: var(--container-color);
+  box-shadow: 1px 0 0 rgba(22, 8, 43, 0.1);
+  z-index: var(--z-fixed);
+  transition: .4s;
+}
+
+.nav__container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-bottom: 3rem;
+  overflow: auto;
+  scrollbar-width: none; /* For mozilla */
+}
+
+/* For Google Chrome and others */
+.nav__container::-webkit-scrollbar {
+  display: none;
+}
+
+.nav__logo {
+  font-weight: var(--font-semi-bold);
+  margin-top: -70px;
+}
+
+.nav__list,
+.nav__items {
+  display: grid;
+}
+
+.nav__list {
+  row-gap: 2.5rem;
+}
+
+.nav__items {
+  row-gap: 1rem;
+}
+
+.nav__subtitle {
+  font-size: var(--font-medium);
+  text-transform: uppercase;
+  letter-spacing: .1rem;
+  color: var(--text-color-light);
+}
+
+.nav__link {
+  display: flex;
+  align-items: center;
+  color: var(--text-color);
+}
+
+.nav__link:hover {
+  color: var(--first-color);
+}
+
+.nav__icon {
+  font-size: .800rem;
+  margin-right: 2.7rem;
+}
+@media screen and (min-width: 768px)
+.nav__icon {
+    font-size: 2.7rem;
+}
+.nav__name {
+  font-size: var(--font-medium);
+  font-weight: var(--font-medium);
+  white-space: nowrap;
+}
+
+.nav__logout {
+  margin-top: 5rem;
+}
+
+/* Dropdown */
+.nav__dropdown {
+  overflow: hidden;
+  max-height: 21px;
+  transition: .4s ease-in-out;
+}
+
+.nav__dropdown-collapse {
+  background-color: var(--first-color-light);
+  border-radius: .25rem;
+  margin-top: 1rem;
+}
+
+.nav__dropdown-content {
+  display: grid;
+  row-gap: .5rem;
+  padding: .75rem 2.5rem .75rem 1.8rem;
+}
+.nav__dropdown-item {
+  font-size: var(--font-medium);
+  font-weight: var(--font-medium);
+  color: var(--text-color);
+}
+
+.nav__dropdown-item:hover {
+  color: var(--first-color);
+}
+
+.nav__dropdown-icon {
+  margin-left: auto;
+  transition: .4s;
+}
+
+/* Show dropdown collapse */
+.nav__dropdown:hover {
+  max-height: 100rem;
+}
+
+/* Rotate icon arrow */
+.nav__dropdown:hover .nav__dropdown-icon {
+  transform: rotate(180deg);
+}
+
+/*===== Show menu =====*/
+.show-menu {
+  left: 0;
+}
+
+/*===== Active link =====*/
+.active {
+  color: var(--first-color);
+}
+
+/* ========== MEDIA QUERIES ==========*/
+/* For small devices reduce search*/
+@media screen and (max-width: 320px) {
+  .header__search {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  body {
+    padding: 1rem 3rem 0 6rem;
+  }
+  .header {
+    padding: 0 3rem 0 6rem;
+  }
+  .header__container {
+    height: calc(var(--header-height) + .5rem);
+  }
+  .header__search {
+    width: 300px;
+    padding: .55rem .75rem;
+  }
+  .header__toggle {
+    display: none;
+  }
+  .header__logo {
+    display: block;
+  }
+  .header__img {
+    width: 40px;
+    height: 40px;
+    order: 1;
+  }
+  .nav {
+    left: 0;
+    padding: 1rem .990rem 0;
+    width: 68px; /* Reduced navbar */
+  }
+  .nav__items {
+    row-gap: 1.7rem;
+  }
+  .nav__icon {
+    font-size: 1.4rem;
+  }
+
+  /* Element opacity */
+  .nav__logo-name,
+  .nav__name,
+  .nav__subtitle,
+  .nav__dropdown-icon {
+    opacity: 0;
+    transition: .3s;
+  }
+
+
+  /* Navbar expanded */
+  .nav:hover {
+    width: var(--nav-width);
+  }
+
+  /* Visible elements */
+  .nav:hover .nav__logo-name {
+    opacity: 1;
+  }
+  .nav:hover .nav__subtitle {
+    opacity: 1;
+
+  }
+  .nav:hover .nav__name {
+    opacity: 1;
+  }
+  .nav:hover .nav__dropdown-icon {
+    opacity: 1;
+  }
+}
+</style>
+<style>
+
+@font-face{
+    font-family: 'Digital-7';
+    src:  url('fonts/digital-7.ttf') format('woff2'),   b ,g,mdrx
+    url('digital-7.woff') format('woff');
+}
+.clockdate-wrapper {
+    background: #ffffff;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #ffffff, #ffffff);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #ffffff, #ffffff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    padding:1px;
+    max-width:350px;
+    width:50%;
+    text-align:center;
+    border-radius:5px;
+    margin:0 auto;
+  
+}
+#clock{
+    font-family: Digital-7, 'sans-serif';
+    font-size:60px;
+    text-shadow:0px 0px 1px #fff;
+    color:#0b0a0a;
+}
+#clock span {
+    color: rgba(0, 0, 0, 0.8);
+    text-shadow:0px 0px 1px #333;
+    font-size:50px;
+    position:relative;
+    top:-5px;
+    left:10px;
+}
+#date {
+    letter-spacing:3px;
+    font-size:14px;
+    font-family:arial,sans-serif;
+    color:#141414;
+}
+.container{
+		width:900px;
+	}
+  body {
+        color: #566787;
+		background: #F9F6FD;
+		font-family: 'Varela Round', sans-serif;
+		font-size: 16px;
+	}
+	.table-wrapper {
+        background: #fff;
+        padding: 20px 25px;
+        margin: 30px 0;
+		box-shadow: 0 1px 1px rgba(0,0,0,.05);
+		border-radius: 30px;
+    }
+	.table-title {        
+		padding-bottom: 15px;
+		background: linear-gradient(40deg, #2096ff, #05ffa3) !important;;
+		color: #fff;
+		padding: 16px 30px;
+		margin: -20px -25px 10px;
+		border-radius: 3px 3px 0 0;
+    }
+    .table-title h2 {
+		margin: 5px 0 0;
+		font-size: 24px;
+	}
+
+
+
+
+ form .button input:hover{
+  /* transform: scale(0.99); */
+  /* background: linear-gradient(-135deg, #71b7e6, #9b59b6); */
+  }
+ @media(max-width: 584px){
+ .container{
+  max-width: 100%;
+}
+form .user-details .input-box{
+    margin-bottom: 15px;
+    width: 100%;
+  }
+  form .category{
+    width: 100%;
+  }
+  .content form .user-details{
+    max-height: 300px;
+    overflow-y: scroll;
+  }
+  .user-details::-webkit-scrollbar{
+    width: 5px;
+  }
+  }
+  @media(max-width: 459px){
+  .container .content .category{
+    flex-direction: column;
+  }
+}
+ </style>
+ <script>
+    
+	function startTime() {
+    var today = new Date();
+    var hr = today.getHours();
+    var min = today.getMinutes();
+    var sec = today.getSeconds();
+    ap = (hr < 12) ? "<span>AM</span>" : "<span>PM</span>";
+    hr = (hr == 0) ? 12 : hr;
+    hr = (hr > 12) ? hr - 12 : hr;
+    //Add a zero in front of numbers<10
+    hr = checkTime(hr);
+    min = checkTime(min);
+    sec = checkTime(sec);
+    document.getElementById("clock").innerHTML = hr + ":" + min + ":" + sec + " " + ap;
+    
+    var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    var days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    var curWeekDay = days[today.getDay()];
+    var curDay = today.getDate();
+    var curMonth = months[today.getMonth()];
+    var curYear = today.getFullYear();
+    var date = curWeekDay+", "+curDay+" "+curMonth+" "+curYear;
+    document.getElementById("date").innerHTML = date;
+
+    
+    var time = setTimeout(function(){ startTime() }, 500);
+    quanti = hr+":"+min+":"+sec ;
+    quant.value=quanti;
+}
+function checkTime(i) {
+    if (i < 10) {
+        i = "0" + i;
+    }
+    return i;
+}
+startTime();
+
+</script>
+</div>
+</div>
+</body>
+</html>

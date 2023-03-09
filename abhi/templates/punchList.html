@@ -1,0 +1,50 @@
+{% load static %}
+<!--Section: Content-->
+<h3 class="fw-bolder">{{page_title}}</h3>
+<hr>
+<section class="py-3">
+    <div class="container">
+        <div class="card rounded-0 shadow-sm blur">
+            <div class="card-body">
+                <div class="container-fluid">
+                    <table class="table table-stripped table-bordered">
+                            <col width="5%">
+                        <tr>
+                            <col width="15%">
+                            <col width="20%">
+                            <col width="25%">
+                            <col width="25%">
+                        </tr>
+                        <thead>
+                            <tr class="bg-primary bg-gradient text-light">
+                                <th class="text-center">#</th>
+                                <th class="text-center">Date Added</th>
+                                <th class="text-center">InTime</th>
+                                <th class="text-center">Out Time</th>
+                                <th class="text-center">Total Time</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for employee in context %}
+                            <tr>
+                                <td class="text-center">{{forloop.counter}}</td>
+                                <td class="">{{ employee.date_created|date:"M d, Y H:i" }}</td>
+                                <td class="">{{employee.start_time}}</td>
+                                <td class="">{{employee.out_time}}</td>
+                                <td class=""><li>{{ employee }}</li></td>
+                            </tr>
+                            {% endfor %} 
+                            {% if not employees %}
+                            <tr>
+                                <th colspan="6" class="text-center">No records.</th>
+                            </tr>
+                            {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</div>

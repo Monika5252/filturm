@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Responsive Navbar </title>
+    <meta name="viewport" content="width=device-width, initial-scale=3.0">
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  </head>
+  <style>
+
+    *{
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
+}
+
+.body1{
+  font-family: montserrat;
+}
+nav{
+  background: rgb(0,29,75);
+  height: 80px;
+  width: 100%;
+}
+label.logo{
+  color: white;
+  font-size: 35px;
+  line-height: 90px;
+  padding: 0 100px;
+  font-weight: bold;
+}
+nav ul{
+  float: right;
+  margin-right: 20px;
+}
+nav ul li{
+  display: inline-block;
+  line-height: 80px;
+  margin: 0 5px;
+}
+nav ul li a{
+  color: white;
+  font-size: 17px;
+  padding: 7px 13px;
+  border-radius: 3px;
+  text-transform: uppercase;
+}
+a.active,a:hover{
+  background: #1b9bff;
+  transition: .5s;
+}
+.checkbtn{
+  font-size: 30px;
+  /* color: white; */
+  float: right;
+  line-height: 80px;
+  margin-right: 40px;
+  cursor: pointer;
+  display: none;
+}
+#check{
+  display: none;
+}
+
+ /* /media querry/
+@media (max-width: 952px){
+  label.logo{
+    font-size: 20px;
+    padding-left: 50px;
+  }
+  nav ul li a{
+    font-size: 16px;
+  }
+}
+ @media (max-width: 858px){
+   .checkbtn{
+    display: block;
+  }
+   ul{
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background: #2c3e50;
+    top: 50px;
+    left: -100%;
+    text-align:center;
+    transition: all .5s;
+  }
+  nav ul li{
+    display: block;
+    margin: 50px 0;
+    line-height: 30px;
+  }
+  nav ul li a{
+    font-size: 20px;
+  }
+  a:hover,a.active{
+    background: none;
+    color: #0082e6;
+  }
+  #check:checked ~ ul{
+    left: 0;
+  }
+ } */
+/* section{
+  background: url(bg1.jpg) no-repeat;
+  background-size: cover;
+  height: calc(100vh - 80px);
+} */
+.container{
+    position: relative;
+    max-width: 1750px;
+    width: 99%;
+    height:648px;
+    border-radius:5px;
+    padding: 35px;
+    margin: 0 15px;
+    background-color: #fff;
+    /* /* box-shadow: 0 5px 10px rgba(0,0,0,0.1); */
+}
+.container header{
+    position: relative;
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+}
+.container header::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    height: 3px;
+    width: 42px;
+    border-radius: 8px;
+    background-color: #4070f4;
+}
+/* .container form{
+    position: relative;
+    margin-top: 15px;
+    min-height: 700px;
+    background-color: #fff;
+    overflow: hidden;
+}
+.container form .form{
+    position: absolute;
+    background-color: #fff;
+    transition: 0.3s ease;
+}
+.container form .form.second{
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(100%);
+}
+form.secActive .form.second{
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(0);
+}
+form.secActive .form.first{
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-100%);
+}
+.container form .title{
+    display: block;
+    margin-bottom: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    margin: 6px 0;
+    color: #333;
+} */
+.container form .fields{
+    display: inline-flex;
+    align-items: center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+}
+form .fields .input-field{
+    display: flex;
+    width: calc(60% / 3 - 15px);
+    flex-direction: column;
+    margin: 4px 0;
+}
+.input-field label{
+    font-size:18.5px;
+    font-weight: 500;
+    color: #2e2e2e;
+}
+.input-field input, select{
+    outline: none;
+    font-size:15px;
+    font-weight: 400;
+    color: #333;
+    border-radius:5px;
+    border: 1px solid #aaa;
+    padding: 10px;
+    length: 15px;
+    height: 42px;
+    margin: 8px 0;
+    text-transform: uppercase;
+}
+.input-field input :focus,
+.input-field input::-webkit-input-placeholder,
+select { /* Edge */
+  text-transform: none;
+}
+
+.input-field input:-ms-input-placeholder,
+select { /* Internet Explorer 10-11 */
+  text-transform: none;
+}
+
+.input-field input::placeholder,
+select {
+  text-transform: none;
+}
+.input-field select:focus{
+    
+    box-shadow: 0 3px 6px rgba(0,0,0,0.13);
+}
+.input-field select,
+.input-field input[type="date"]{
+    color: #707070;
+}
+.input-field input[type="date"]:valid{
+    color: #333;
+}
+.container form button, .backBtn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 45px;
+    max-width: 200px;
+    width: 100%;
+    border: none;
+    outline: none;
+    /* color: #fff; */
+    border-radius: 5px;
+    margin: 25px 0;
+    background-color:#3498db;
+    transition: all 0.7s linear;
+    cursor: pointer;
+}
+.container form .btnText{
+    font-size: 18.5px;
+    font-weight: 500;
+}
+form button:hover{
+    background-color: #3498db;
+}
+/* form button i,
+form .backBtn i{
+    margin: 0 6px;
+}
+form .backBtn i{
+    transform: rotate(180deg);
+}
+form .buttons{
+    display: flex;
+    align-items: center;
+}
+form .buttons button , .backBtn{
+    margin-right: 14px; 
+}
+/* @media (max-width: 750px) {
+    .container form{
+        overflow-y: scroll;
+    }
+    .container form::-webkit-scrollbar{
+       display: none;
+    }
+    form .fields .input-field{
+        width: calc(100% / 2 - 15px);
+    }
+}
+
+@media (max-width: 550px) {
+    form .fields .input-field{
+        width: 100%;
+    }
+} */
+.body1{
+   min-height: 100vh;
+    /* display: flex; */
+    /* align-items: center; */
+    justify-content: center;
+    background:rgb(240, 235, 235)
+}
+
+.ak{
+    text-align: center;
+  font-size: 25px;
+  height: 3px;
+  text-decoration-style: solid ;  
+    /* text-decoration: underline rgb(0, 0, 255); */
+}
+marquee{
+	padding: 4px;
+	color:white;
+	font-size:27px;
+    font-style:impact;
+    /* font-weight: 100px; */
+	
+}
+
+</style>
+
+      <br><br>
+<img style="float: right; margin: 0px 0px 15px 15px;" src="C:\Users\hp\Desktop\logo-filtrum.png" width="175" /><br><br><br>
+<br>
+
+<nav style="margin-top: 12px;border-top-width: 142px;margin-bottom: 0px;height: 60px;"> <marquee direction="left">!... Welcome To Filtrum Autocomp Private Limited ...!
+</marquee> 
+  
+  </nav>
+    <body>
+
+    
+        <header class="ak" style="height:48px;"><h2>Family Details</h2></header>
+<div class="container" style="padding-bottom: 8px;padding-left: 0px;padding-right: 0px;padding-top:2px;margin-left: 2px;margin-right: 2px;">
+
+            <form method="POST" style="padding-left:40px;">
+                {% csrf_token%}
+                <div class="form first">
+                    <div class="details personal">
+                       
+                        <div class="fields" style="margin-top: 10px;">
+                            <div class="input-field">
+                                <label>Father /In Laws :-</label>
+                                <input type="text"  placeholder="Enter Father / In Laws" name="father">
+                            </div>
+
+                            <div class="input-field">
+                                <label>Date Of Birth :-</label>
+                                <input type="date"  placeholder="Enter Birthdate " name="fdob">
+                            </div>
+
+                            <div class="input-field">
+                                <label>Age :-</label>
+                                <input type="number" name="fage" placeholder="Enter Age" >
+                            </div>
+
+                            <div class="input-field">
+                                <label>Gender :-</label>
+                                <select  name="ffgen">
+                                    <option disabled selected>Select Gender</option>
+                                    <option>MALE</option>
+                                    <option>FEMALE</option>
+                                    <option>OTHERS</option>
+                                </select>
+                            </div>
+
+                            <div class="input-field">
+                                <label>Relation With Employee :-</label>
+                                <input type="text" name="frelstion" placeholder="Enter Relation With Employee " >
+                            </div>
+
+                            <div class="input-field">
+                                <label>Mother /In Laws :-</label>
+                                <input type="text" name="mather" placeholder="Enter Mother / In Laws" >
+                            </div>
+
+                            <div class="input-field">
+                                <label>Date of Birth :-</label>
+                                <input type="date" name="mdob" placeholder="Enter Birthdate ">
+                            </div>
+
+                            <div class="input-field">
+                                <label>Age :-</label>
+                                <input type="number" name="mage" placeholder="Enter Age" >
+                            </div>
+                            <div class="input-field">
+                                <label>Gender :-</label>
+                                <select  name="mgen" >
+                                    <option disabled selected>Select Gender</option>
+                                    <option>MALE</option>
+                                    <option>FEMALE</option>
+                                    <option>OTHERS</option>
+                                </select>
+                            </div>
+
+                            <div class="input-field">
+                                <label>Relation With Employee :-</label>
+                                <input type="text" name="mrelstion" placeholder="Enter Relation With Employee " >
+                            </div>
+
+                   <!-- <h1>Spouse</h1> -->
+
+                            <div class="input-field">
+                                <label>Children 1 :-</label>
+                                <input type="text" name="children1" placeholder="Enter Father / In Laws" >
+                            </div>
+
+                            <div class="input-field">
+                                <label>Date of Birth :-</label>
+                                <input type="date" name="c1dob" placeholder="Enter Birthdate " >
+                            </div>
+
+
+                            <div class="input-field">
+                                <label>Age :-</label>
+                                <input type="number" name="c1age" placeholder="Enter Age" >
+                            </div>
+                            <div class="input-field">
+                                <label>Gender :-</label>
+                                <select  name="c1gen" >
+                                    <option disabled selected>Select Gender</option>
+                                    <option>MALE</option>
+                                    <option>FEMALE</option>
+                                    <option>OTHERS</option>
+                                </select>
+                            </div>
+
+                            <div class="input-field">
+                                <label>Relation With Employee :-</label>
+                                <input type="text" name="c1relstion" placeholder="Enter Relation With Employee " >
+                            </div>
+
+
+
+                            <div class="input-field">
+                                <label>Chldren 2 :-</label>
+                                <input type="text" name="children2" placeholder="Enter Father / In Laws" >
+                            </div>
+
+                            <div class="input-field">
+                                <label>Date of Birth :-</label>
+                                <input type="date" name="c2dob" placeholder="Enter Birthdate " >
+                            </div>
+
+                            <div class="input-field">
+                                <label>Age :-</label>
+                                <input type="number" name="c2age" placeholder="Enter Age" >
+                            </div>
+                            <div class="input-field">
+                                <label>Gender :-</label>
+                                <select  name="c2gen" >
+                                    <option disabled selected>Select Gender</option>
+                                    <option>MALE</option>
+                                    <option>FEMALE</option>
+                                    <option>OTHERS</option>
+                                </select>
+                            </div>
+
+                            <div class="input-field">
+                                <label>Relation With Employee :-</label>
+                                <input type="text" name="c2relstion" placeholder="Enter Relation With Employee " >
+                            </div>
+
+                            
+                           <a href="">
+                            <button type="previous" class="sumbit" style="margin-left: 0px;">
+                                <span class="btnText">previous</span>
+                                <i class="uil uil-navigator"></i>
+                            </button>
+                           </a>
+
+
+                            <a href="">
+                            <button type="submit" class="sumbit" style="margin-right:100;">
+                                <span class="btnText">Next</span>
+                                <i class="uil uil-navigator"></i>
+                            </button>
+                            </a>
+                       
+                          </div>
+                        </div>
+                    </div>
+                 </div>
+            </form>
+</div>
+</body>
+
+</html>

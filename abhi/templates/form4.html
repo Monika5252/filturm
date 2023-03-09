@@ -1,0 +1,316 @@
+
+<html>
+    <head>
+        <title> </title>
+        
+    </head>
+    
+<style>
+  body {
+    width: 70%;
+}
+
+table{
+    border-collapse: collapse;
+    background-color: #ffffff;
+
+}
+table.list{
+    width:100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+tr:nth-child(even),table.list thead>tr {
+    background-color: #ffffff;
+}
+
+input[type=text], input[type=number], input[type=date] {
+  
+    width: 100%;
+    height: 42px;
+    padding: 10px;
+    margin: 8px 0;
+    font-size: 15px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    text-transform: uppercase;
+    
+}
+.input-field input :focus,
+.input-field input::-webkit-input-placeholder,
+input[type=number] ::-webkit-input-placeholder,
+input[type=text] ::-webkit-input-placeholder,
+select { /* Edge */
+  text-transform: none;
+}
+
+.input-field input:-ms-input-placeholder,
+select,
+input[type=number]:-ms-input-placeholder,
+input[type=text]:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  text-transform: none;
+}
+
+.input-field input::placeholder,
+select,
+input[type=number]::placeholder,
+input[type=text]::placeholder {
+  text-transform: none;
+}
+input[type=submit]{
+    width: 144px;
+    margin-left: 101px;
+    margin-bottom:17px;
+    height:44px;
+    margin-top:17px;
+    padding-right:10px;
+    background-color: #3498db;
+    color: rgb(10, 10, 10);
+    /* padding: 14px 20px; */
+    text-align: center;
+    text-decoration:none;
+    display: inline-block;
+    font-size: 18.5px;
+    margin: 7px 2px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+form
+{
+    background-color: #f8f8f8;
+}
+
+form div.form-action-buttons{
+    text-align: right;
+    overflow: hidden;
+}
+
+a{
+    cursor: pointer;
+    text-decoration: underline;
+    color: #0000ee;
+    margin-right: 4px;
+}
+
+label.validation-error{
+    color:   red;
+    margin-left: 5px;
+}
+
+.hide{
+    display:none;
+}
+/* --------------------------------------------------------------------- */
+
+nav{
+  background: rgb(0,29,75);
+  height: 80px;
+  width: 100%;
+}
+label.logo{
+  color: white;
+  font-size: 35px;
+  line-height: 90px;
+  padding: 0 100px;
+  font-weight: bold;
+}
+nav ul{
+  float: right;
+  margin-right: 20px;
+}
+nav ul li{
+  display: inline-block;
+  line-height: 80px;
+  margin: 0 5px;
+}
+nav ul li a{
+  color: white;
+  font-size: 17px;
+  padding: 7px 13px;
+  border-radius: 3px;
+  text-transform: uppercase;
+  
+}
+a.active,a:hover{
+  background: #1b9bff;
+  transition: .5s;
+}
+.checkbtn{
+  font-size: 30px;
+  /* color: rgb(8, 8, 8); */
+  float: right;
+  line-height: 80px;
+  margin-right: 40px;
+  cursor: pointer;
+  display: none;
+}
+#check{
+  display: none;
+}
+
+*{
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
+}
+
+.body1{
+  font-family: montserrat;
+}
+
+
+.button3 {border-radius: 8px;}
+
+
+.button {
+  width: 144px;
+  background-color: #3498db;
+  border: none;
+  color: rgb(0, 0, 0);
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 18.5px;
+  margin: 7px 2px;
+  cursor: pointer;
+}
+
+.ak{
+    text-align: center;
+  font-size: 25px;
+  height: 3px;
+  text-decoration-style: solid ;  
+    /* text-decoration: underline rgb(0, 0, 255); */
+}
+marquee{
+	padding: 4px;
+	color:white;
+	font-size:27px;
+    font-style:impact;
+    /* font-weight: 100px; */
+	
+}
+input[type=submit]{
+  font-size:18.5;
+    width: 20%;
+    background-color: #3498db;
+    color: #fff;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.button {
+  background-color: #3498db;
+  border: none;
+  color: rgb(0, 0, 0);
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 18.5px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+.container form button, .backBtn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 45px;
+    max-width: 200px;
+    width: 100%;
+    border: none;
+    outline: none;
+    /* color: #fff; */
+    border-radius: 5px;
+    margin: 25px 0;
+    background-color: #3498db;
+    transition: all 0.7s linear;
+    cursor: pointer;
+}
+.container form .btnText{
+    font-size: 18.5px;
+    font-weight: 500;
+}
+</style>
+
+
+<!-- <img style="float: right; margin: 0px 0px 15px 15px;" src="C:\Users\ASUS\Pictures\Final Filtrum Logo PNG (2)akkkkkk.png" width="170" /><br><br><br>
+<br>
+
+<nav style="margin-top: 12px;border-top-width: 142px;margin-bottom: 0px;height: 26px;">
+    <input type="checkbox" id="check">
+    <label for="check" class="checkbtn">
+      <i class="fas fa-bars"></i>
+    </label>
+
+  </nav><br> -->
+    <body style="width: 1524px;">
+      <br><br>
+      <img style="float: right; margin: 0px 0px 15px 15px;" src="C:\Users\hp\Desktop\logo-filtrum.png" width="175" /><br><br><br>
+<br>
+
+<nav style="margin-top: 12px;border-top-width: 148px;margin-bottom: 0px;height: 60px;width: 1534px;"><marquee direction="left">!... Welcome To Filtrum Autocomp Private Limited ...!
+</marquee> 
+    <input type="checkbox" id="check">
+    <label for="check" class="checkbtn">
+      <i class="fas fa-bars"></i>
+    </label>
+
+  </nav>
+       -->
+
+<header class="ak" style="height:48px;"><h2>Work Experiance</h2></header>
+
+     <form method="POST" style="padding-left:40px;">
+                {% csrf_token%}
+                <div class="form first">
+                    <div class="details personal">
+
+                        <div class="fields" style="margin-top: 10px;">
+                            <div class="input-field">
+                                <label>Company Name :-</label>
+                                <input type="text" name="companyname" placeholder="Enter Father / In Laws" >
+                            </div>
+
+                            <div class="input-field">
+                                <label>Duration (From):-</label>
+                                <input type="date" name="durationfrom" placeholder="Enter Birthdate >
+                            </div>
+
+                            <div class="input-field">
+                                <label>Duration(To):-</label>
+                                <input type="date" name="durationto" placeholder="Enter Age" >
+                            </div>
+                            <div class="input-field">
+                                <label>Joning CTC :-</label>
+                                <input type="number" name="joiningctc" placeholder="Enter Age" >
+                            </div>
+                            <div class="input-field">
+                                <label>Last CTC :-</label>
+                                <input type="number" name="lctc" placeholder="Enter Age" >
+                            </div>
+                            <div class="input-field">
+                                <label>Total Work Experience:-</label>
+                                <input type="text" name="twe" placeholder="Enter Age" >
+                            </div>
+
+<button type="submit">Submit</button>
+                        </div>
+                    </div>
+                </div>
+     </form>
+    </body>
+</html>

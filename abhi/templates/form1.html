@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>{% block title %} {% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=3.0">
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  </head>
+  <style>
+    *{
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
+}
+
+.body1{
+  font-family: montserrat;
+}
+nav{
+  background:rgb(0,29,75);
+  height: 50px;
+  width: 101%;
+}
+label.logo{
+  color: white;
+  font-size: 20px;
+  line-height: 50px;
+  padding: 0 100px;
+  font-weight: bold;
+}
+nav ul{
+  float: right;
+  margin-right: 20px;
+}
+nav ul li{
+  display: inline-block;
+  line-height: 50px;
+  margin: 0 5px;
+}
+nav ul li a{
+  color: white;
+  font-size: 17px;
+  padding: 7px 13px;
+  border-radius: 3px;
+  text-transform: uppercase;
+}
+a.active,a:hover{
+  background: #1b9bff;
+  transition: .5s;
+}
+.checkbtn{
+  font-size: 30px;
+  /* color: white; */
+  float: right;
+  line-height: 80px;
+  margin-right: 40px;
+  cursor: pointer;
+  display: none;
+}
+#check{
+  display: none;
+}
+
+ /* /media querry/
+@media (max-width: 952px){
+  label.logo{
+    font-size: 20px;
+    padding-left: 50px;
+  }
+  nav ul li a{
+    font-size: 16px;
+  }
+}
+ @media (max-width: 858px){
+   .checkbtn{
+    display: block;
+  }
+   ul{
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background: #2c3e50;
+    top: 50px;
+    left: -100%;
+    text-align:center;
+    transition: all .5s;
+  }
+  nav ul li{
+    display: block;
+    margin: 50px 0;
+    line-height: 30px;
+  }
+  nav ul li a{
+    font-size: 20px;
+  }
+  a:hover,a.active{
+    background: none;
+    color: #0082e6;
+  }
+  #check:checked ~ ul{
+    left: 0;
+  }
+ } */
+/* section{
+  background: url(bg1.jpg) no-repeat;
+  background-size: cover;
+  height: calc(100vh - 80px);
+} */
+.container{
+    /* background:url('C:/Users/hp/Desktop/HR.jfif'); */
+    position:relative;
+    max-width: 1750px;
+    width: 99%;
+    height:648px;
+    border-radius:5px;
+    padding: 35px;
+    margin: 0 15px;
+    background-color: #fff;
+    /* /* box-shadow: 0 5px 10px rgba(0,0,0,0.1); */
+}
+.container header{
+    position: relative;
+    left:582px;
+    font-size: 25px;
+    font-weight: 600;
+    color: #333;
+}
+.container header::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    height: 3px;
+    width: 365px;
+    border-radius: 8px;
+    background-color: #4070f4;
+}
+/* .container form{
+    position: relative;
+    margin-top: 15px;
+    min-height: 700px;
+    background-color: #fff;
+    overflow: hidden;
+}
+.container form .form{
+    position: absolute;
+    background-color: #fff;
+    transition: 0.3s ease;
+}
+.container form .form.second{
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(100%);
+}
+form.secActive .form.second{
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(0);
+}
+form.secActive .form.first{
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-100%);
+}
+.container form .title{
+    display: block;
+    margin-bottom: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    margin: 6px 0;
+    color: #333;
+} */
+.container form .fields{
+    display: inline-flex;
+    align-items: center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+}
+form .fields .input-field{
+    display: flex;
+    width: calc(90% / 3 - 15px);
+    flex-direction: column;
+    margin: 4px 0;
+}
+.input-field label{
+    font-size:18.5px;
+    font-weight: 500;
+    font-style: impact;
+    color: #2e2e2e;
+}
+.input-field input, select{
+    outline: none;
+    font-size:15px;
+    font-weight: 400;
+    color: #333;
+    border-radius:5px;
+    border: 1px solid #aaa;
+    padding: 10px;
+    length: 15px;
+    height: 42px;
+    margin: 8px 0;
+    text-transform: uppercase;
+}
+.input-field input :focus,
+.input-field input::-webkit-input-placeholder,
+select { /* Edge */
+  text-transform: none;
+}
+
+.input-field input:-ms-input-placeholder,
+select { /* Internet Explorer 10-11 */
+  text-transform: none;
+}
+
+.input-field input::placeholder,
+select {
+  text-transform: none;
+}
+.input-field select:focus{
+    box-shadow: 0 3px 6px rgba(0,0,0,0.13);
+}
+.input-field select,
+.input-field input[type="date"]{
+    color: #333;
+}
+.input-field input[type="date"]:valid{
+    color: #333;
+}
+.container form button, .backBtn{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    height: 45px;
+    max-width: 200px;
+    width: 100%;
+    border: none;
+    outline: none;
+    /* color: #fff; */
+    border-radius: 5px;
+    margin: 25px 0;
+    background-color:#3498db;
+    transition: all 0.7s linear;
+    cursor: pointer;
+}
+.container form .btnText{
+    font-size: 18.5px;
+    font-weight: 500;
+}
+form button:hover{
+    background-color: #265df2;
+}
+/* form button i,
+form .backBtn i{
+    margin: 0 6px;
+}
+form .backBtn i{
+    transform: rotate(180deg);
+}
+form .buttons{
+    display: flex;
+    align-items: center;
+}
+form .buttons button , .backBtn{
+    margin-right: 14px; 
+}
+/* @media (max-width: 750px) {
+    .container form{
+        overflow-y: scroll;
+    }
+    .container form::-webkit-scrollbar{
+       display: none;
+    }
+    form .fields .input-field{
+        width: calc(100% / 2 - 15px);
+    }
+}
+
+@media (max-width: 550px) {
+    form .fields .input-field{
+        width: 100%;
+    }
+} */
+
+.body1{
+   min-height: 100vh;
+    /* display: flex; */
+    /* align-items: center; */
+    justify-content: center;
+    background:rgb(240, 235, 235)
+}
+
+.ak{
+    text-align: center;
+  font-size: 25px;
+  height: 3px;
+  text-decoration-style: solid ;  
+    /* text-decoration: underline blue; */
+}
+marquee{
+	padding: 4px;
+	color:white;
+	font-size:27px;
+    font-style:impact;
+    /* font-weight: 100px; */
+	
+}
+
+</style>
+
+
+<br><br>
+<img style="float: right; margin: 0px 0px 15px 15px;" src="C:\Users\hp\Desktop\logo-filtrum.png" width="175" /><br><br><br>
+<br>
+
+  <nav style="margin-top: 12px;border-top-width: 142px;margin-bottom: 0px;height: 60px;"> <marquee direction="left">!... Welcome To Filtrum Autocomp Private Limited ...!
+</marquee> 
+      <input type="checkbox" id="check">
+      <label for="check" class="checkbtn">
+        <i class="fas fa-bars"></i>
+      </label>
+
+    </nav>
+
+
+    <body>
+        <header class="ak"><h2>Employee Information</h2></header>
+<div class="container" style="padding-bottom: 9px;padding-left: 0px;padding-right: 0px;padding-top:2px;margin-left: 2px;margin-right: 2px;bottom: 37px;top: 45px;"><br>
+
+            <form method="POST" style="padding-left:40px;">
+                  {% csrf_token %}
+                <div class="form first">
+                        <div class="fields">
+                            <div class="input-field">
+                                <label>First Name :-</label>
+                                <input type="text"  name="fname" placeholder="Enter Your First Name" required>
+                            </div>
+                            <div class="input-field">
+                                <label>Middle Name :-</label>
+                                <input type="text"  placeholder="Enter Your Middle Name" required name="mname">
+                            </div>
+                            <div class="input-field">
+                                <label>Last Name :-</label>
+                                <input type="text"  placeholder="Enter Your Last Name" required name="lname">
+                            </div>
+
+                            <div class="input-field">
+                                <label>Date of Birth :-</label>
+                                <input type="date"  placeholder="Enter Birthdate " required name="DOB">
+                            </div>
+
+                            <div class="input-field">
+                                <label>Birth Place :-</label>
+                                <input type="text"  placeholder="Enter Birth Place" required name="bplace">
+                            </div>
+
+                            <div class="input-field">
+                                <label>Birth Place Taluka :-</label>
+                                <input type="text"  placeholder="Enter Birth Place Taluka" required name="bptaluka">
+                            </div>
+
+                            <div class="input-field">
+                                <label>Birth place District :-</label>
+                                <input type="text" placeholder="Enter Birth Place District" required name="bpd">
+                            </div>
+
+                            <div class="input-field">
+                                <label>Age :-</label>
+                                <input type="text" placeholder="Enter Your Age" required name="age">
+                            </div>
+
+                            <div class="input-field">
+                                <label>Language Known :-</label>
+                                <input type="text"  placeholder="Read / Write / Speak" required name="lknown">
+                            </div>
+
+                            <div class="input-field">
+                                <label>Gender :-</label>
+                                <select   required name="gender">
+                                    <option disabled selected>Select Gender</option>
+                                    <option>MALE</option>
+                                    <option>FEMALE</option>
+                                    <option>OTHERS</option>
+                                </select>
+                            </div>
+
+                            <div class="input-field">
+                                <label>Marital Status :-</label>
+                                <select  required name="mstetus">
+                                    <option disabled selected>Select Marital Status </option>
+                                    <option>SINGLE</option>
+                                    <option>MARRIED</option>
+                                    <option>UNMARRIED</option>
+                                </select>
+                            </div>
+
+
+                            <div class="input-field">
+                                <label>Blood Group :-</label>
+                                <select   required name="bgroup">
+                                    <option disabled selected>Select Blood Group</option>
+                                    <option>A+</option>
+                                    <option>A-</option>
+                                    <option>B+</option>
+                                    <option>B-</option>
+                                    <option>o+</option>
+                                    <option>o-</option>
+                                    <option>AB+</option>
+                                    <option>AB-</option>
+                                </select>
+                            </div>
+
+                              <div class="input-field">
+                                <label>Nationality :-</label>
+                                <input type="text"  placeholder="Enter Your Nationality" required name="nlity">
+                            </div>
+
+                            <div class="input-field">
+                                <label>Religion :-</label>
+                                <input type="text"  placeholder="Enter Your Religion" required name="religion">
+                                </div>
+
+                                <div class="input-field">
+                                    <label>Caste :-</label>
+                                    <input type="text"  placeholder="Enter Your Caste" required name="cast">
+                                    </div>
+
+                                    <div class="input-field">
+                                        <label>Category :-</label>
+                                        <input type="text"  placeholder="Enter Your Category" required name="category">
+                                        </div>
+
+                                        <div class="input-field">
+                                            <label>Email Id :-</label>
+                                            <input type="text"   placeholder="Enter Your Email" required name="emailid">
+                                        </div>
+
+                            <div class="input-field">
+                                <label>Contact No :-</label>
+                                <input type="text"   placeholder="Enter Your Contact No" required name="contactno">
+                            </div>
+
+
+                            <div class="input-field">
+                                <label> Emergency Contact No :-</label>
+                                <input type="text"   placeholder="Enter Your Emergency Contact No." required name="eno">
+                            </div>
+
+                            <div class="input-field">
+                                <label>Aadhar Card No :-</label>
+                                <input type="text" id="aadhar no"   name="ak">
+                            </div>
+
+                            <div class="input-field">
+                                <label>Aadhar Card Image :-</label>
+                                <input type="file" id="img"   required name="adharimage">
+                            </div>
+
+                            <div class="input-field">
+                                <label>Pan Card No :-</label>
+                                <input type="text"  placeholder="Enter Your Pan No." name="panno">
+                            </div>
+
+                            <div class="input-field">
+                                <label>Pan Card Image :-</label>
+                                <input type="file" id="img"   required name="panimage">
+                            </div>
+
+                            <div class="input-field">
+                                <label>Present Address :-</label>
+                                <input type="text"   placeholder="Enter Present Address" required name="pad">
+                            </div>
+                            <div class="input-field">
+                                <label> Pin Code :-</label>
+                                <input type="text"   placeholder="Enter Present Pin code" required name="pincode">
+                            </div>
+                            <div class="input-field">
+                                <label>Permanent Address :-</label>
+                                <input type="text"   placeholder="Enter Permanent Address" required name="peraddress" >
+
+                            </div> <div class="input-field">
+                                <label> pin code :-</label>
+                                <input type="text"   placeholder="Enter Permanent pin code" required name="percode">
+                            </div>
+
+                        <div class="input-field">
+                            <label>Employee Image :-</label>
+                            <input type="file" id="img" name="adhura">
+                        </div>
+
+                          
+<!--                          <button type="submit" class="" style="margin-left: 1200px;">-->
+<!--                              <span class="btnText"><a href="">Next Page</a></span>-->
+<!--                                <i class="uil uil-navigator"></i>-->
+<!--                            </button>-->
+
+                            <button type="{}">Submit</button>
+
+                          </div>
+                         </div>
+                        </div>
+                </div>
+            </form>
+</div>
+</body>
+</html>
